@@ -1,0 +1,45 @@
+name: c_mqtt
+# arch: PLATFORM
+version: 1.0
+skeleton_version: 2017-05-18
+sources:
+  - src
+filesystem:
+  - fs
+config_schema:
+  - ["device.id", "test"]
+  - ["device.password", "test"]
+  - ["i2c.enable", true]
+
+  - ["mqtt.enable", true]
+  - ["mqtt.server", "a3cor2iw5jt49t.iot.ap-southeast-1.amazonaws.com:8883"]
+  - ["mqtt.ssl_ca_cert", "ca-verisign-g5.crt.pem"]
+  - ["mqtt.ssl_cert", "aws-iot-03225f0a73.crt.pem"]
+  - ["mqtt.ssl_key", "aws-iot-03225f0a73.key.pem"]
+  - ["mqtt.ssl_cipher_suites", "TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256"]
+  - ["mqtt.pub", "s", "mhiot/16211010/output", {title: "Publish topic"}]
+  - ["mqtt.sub", "s", "mhiot/16211010/input", {title: "Subscribe topic"}]
+  # - ["http.enable", false]
+  - ["wifi.sta.enable", true]
+  - ["wifi.sta.ssid", "MHIoTLab"]
+  - ["wifi.sta.pass", "63043114"]
+  - ["wifi.ap.enable", false]
+  - ["debug.level", 2] # Info Level
+  #- ["debug.mbedtls_level", 3]
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/http-server
+  - origin: https://github.com/mongoose-os-libs/ota-http-server
+  - origin: https://github.com/mongoose-os-libs/rpc-loopback
+  - origin: https://github.com/mongoose-os-libs/rpc-mqtt
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-service-gpio
+  - origin: https://github.com/mongoose-os-libs/rpc-service-i2c
+  - origin: https://github.com/mongoose-os-libs/rpc-service-ota
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/spi
+  - origin: https://github.com/mongoose-os-libs/vfs-dev-spi-flash
+  - origin: https://github.com/mongoose-os-libs/wifi
+build_vars:
+  SSL: mbedTLS
